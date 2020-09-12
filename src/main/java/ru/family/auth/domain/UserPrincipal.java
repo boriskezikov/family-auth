@@ -8,11 +8,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import java.math.BigInteger;
 
@@ -35,7 +33,4 @@ public class UserPrincipal {
     private String password;
 
     private String twoFaCode;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    private PublicUser publicUser;
 }

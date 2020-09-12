@@ -40,9 +40,9 @@ public class PublicUser {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     @Pattern(regexp = "^(\\+7|7|8)?[\\s\\-]?\\(?[489][0-9]{2}\\)?[\\s\\-]?[0-9]{3}[\\s\\-]?[0-9]{2}[\\s\\-]?[0-9]{2}$", flags = Pattern.Flag.UNICODE_CASE)
-    private String phone;
+    private transient String phone;
 
     @Column(nullable = false, unique = true)
     @Email(regexp = ".+@.+\\..+")
