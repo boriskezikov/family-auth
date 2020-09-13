@@ -47,7 +47,7 @@ public class SecurityFilter implements Filter {
             }
         });
 
-        if (!exclude.get() && (authHeader == null || !Objects.equals(authHeader, "GREEN"))) {
+        if (!exclude.get() && (authHeader == null || !Objects.equals(authHeader, "FAMILY"))) {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setContentType("application/json");
             httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Required headers not specified in the request or incorrect");

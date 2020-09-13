@@ -1,7 +1,9 @@
 package ru.family.auth.api;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +18,9 @@ public class AuthController {
 
     private final AuthenticationService authenticationService;
 
-    @PostMapping("/authenticate")
-    public void authenticate(@RequestBody @Validated UserCredentialsDTO userCredentialsDTO) {
-        authenticationService.authenticate(userCredentialsDTO);
+    @GetMapping("/authenticate")
+    public UserCredentialsDTO authenticate(@NonNull String email) {
+        return authenticationService.authenticate(email);
     }
 
 }

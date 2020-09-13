@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface CredentialsStorage extends CrudRepository<UserPrincipal, BigInteger> {
 
     Optional<UserPrincipal> findByLoginAndPassword(String login, String password);
+    Optional<UserPrincipal> findByLogin(String login);
 }

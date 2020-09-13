@@ -19,13 +19,13 @@ import ru.family.auth.services.RegistrationService;
 import javax.validation.constraints.NotEmpty;
 
 @RestController
-@RequestMapping("/auth/register")
+@RequestMapping("/auth/")
 @RequiredArgsConstructor
 public class RegistrationController {
 
     private final RegistrationService registrationService;
 
-    @PostMapping
+    @PostMapping("/register")
     @ResponseStatus(value = HttpStatus.CREATED)
     public PublicUser signUp(@RequestBody @Validated UserRegistrationDTO userRegistrationDTO) {
         return registrationService.register(userRegistrationDTO);
