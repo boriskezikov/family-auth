@@ -5,7 +5,7 @@ spring:
     password: fd9905b8d281bd6f5773748023ebe35ee5aa2cc91670a2dd4e7a1f4a432e5d00
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
   application:
     name: auth-service
 zuul:

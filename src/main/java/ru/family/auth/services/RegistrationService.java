@@ -149,7 +149,6 @@ public class RegistrationService {
 
         userStorage.save(user);
         log.info("Anonymous user created!");
-
     }
 
 }
