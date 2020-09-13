@@ -20,6 +20,7 @@ import ru.family.auth.dto.Verify2FaDTO;
 import ru.family.auth.repository.CredentialsStorage;
 import ru.family.auth.repository.UserStorage;
 
+import javax.annotation.PostConstruct;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -126,6 +127,29 @@ public class RegistrationService {
                         log.warn("User {} has not confirmed his registration and has been removed.", user.getId());
                     }
                 });
+    }
+
+    @PostConstruct
+    public void generateAnonymousUser() {
+        UserPrincipal userPrincipal = UserPrincipal.builder()
+                .login("anonymous")
+                .password(passwordEncoder.encode("anonymous"))
+                .twoFaCode(generate2FaCode())
+                .build();
+
+        PublicUser user = PublicUser.builder()
+                .firstName("anonymous")
+                .lastName("anonymous")
+                .primaryEmail("anonymous")
+                .principal(credentialsStorage.save(userPrincipal))
+                .created(LocalDateTime.now())
+                .updated(LocalDateTime.now())
+                .isEnabled(true)
+                .build();
+
+        userStorage.save(user);
+        log.info("Anonymous user created!");
+
     }
 
 }

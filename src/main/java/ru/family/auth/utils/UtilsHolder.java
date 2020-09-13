@@ -2,6 +2,7 @@ package ru.family.auth.utils;
 
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.Random;
 
 @Service
